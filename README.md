@@ -1,17 +1,17 @@
-# AutoDLD - 学术期刊日报系统
+# AutoDLD - Academic Journal Daily Report System
 
-一个自动化的学术期刊日报系统，能够自动爬取多个顶级学术期刊的最新文章，使用DeepSeek AI生成摘要，并生成美观的HTML日报页面和邮件推送。
+An automated academic journal daily report system that automatically crawls the latest articles from multiple top-tier academic journals, uses DeepSeek AI to generate summaries, and creates beautiful HTML daily reports with email notifications.
 
-## 🌟 功能特性
+## 🌟 Features
 
-- **📚 多期刊支持**: 支持10个顶级学术期刊的自动爬取
-- **🤖 AI摘要生成**: 使用DeepSeek API生成300-500字的中文摘要
-- **🎨 美观界面**: 响应式HTML页面，支持深色/浅色模式
-- **📧 邮件推送**: 自动发送HTML格式的日报邮件
-- **⏰ 定时任务**: 自动配置cron定时任务，每天8点执行
-- **📊 统计分析**: 提供期刊分布和文章统计信息
+- **📚 Multi-Journal Support**: Automatic crawling of 10 top academic journals
+- **🤖 AI Summary Generation**: Uses DeepSeek API to generate 300-500 word Chinese summaries
+- **🎨 Beautiful Interface**: Responsive HTML pages with dark/light mode support
+- **📧 Email Delivery**: Automatic HTML-formatted daily report emails
+- **⏰ Scheduled Tasks**: Automatic cron job configuration, runs daily at 8:00 AM
+- **📊 Statistical Analysis**: Provides journal distribution and article statistics
 
-## 📋 支持的期刊列表
+## 📋 Supported Journals
 
 1. **Nature Machine Intelligence**
 2. **Medical Image Analysis**
@@ -24,190 +24,190 @@
 9. **Developmental Psychology**
 10. **International Journal of Language & Communication Disorders**
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 1. 安装依赖
+### 1. Install Dependencies
 
 ```bash
-cd /Users/ambrose/Desktop/codelab/AutoDLD
+cd AutoDLD
 pip install -r requirements.txt
 ```
 
-### 2. 配置信息
+### 2. Configuration
 
-编辑 `config.py` 文件，配置以下信息：
+Edit the `config.py` file with your information:
 
 ```python
-# DeepSeek API配置（请在此处填写您的API密钥）
+# DeepSeek API Configuration (Enter your API key here)
 DEEPSEEK_API_KEY = "YOUR_DEEPSEEK_API_KEY_HERE"
 
-# 邮箱配置（请在此处填写您的邮箱信息）
+# Email Configuration (Enter your email information here)
 EMAIL_CONFIG = {
-    'smtp_server': 'smtp.qq.com',  # 或使用其他SMTP服务器
+    'smtp_server': 'smtp.qq.com',  # or use other SMTP servers
     'smtp_port': 587,
-    'sender_email': 'YOUR_EMAIL@example.com',  # 发件人邮箱
-    'sender_password': 'YOUR_EMAIL_PASSWORD',  # 邮箱授权码或密码
-    'receiver_email': 'YOUR_RECEIVER_EMAIL@example.com'  # 接收邮箱
+    'sender_email': 'YOUR_EMAIL@example.com',  # sender email
+    'sender_password': 'YOUR_EMAIL_PASSWORD',  # email authorization code or password
+    'receiver_email': 'YOUR_RECEIVER_EMAIL@example.com'  # receiver email
 }
 ```
 
-### 3. 获取QQ邮箱授权码
+### 3. Get QQ Email Authorization Code (if using QQ Mail)
 
-1. 登录QQ邮箱网页版
-2. 进入"设置" → "账户"
-3. 找到"POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务"
-4. 开启"POP3/SMTP服务"
-5. 按照提示获取授权码
+1. Log in to QQ Mail web version
+2. Go to "Settings" → "Account"
+3. Find "POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV Service"
+4. Enable "POP3/SMTP Service"
+5. Follow instructions to get authorization code
 
-### 4. 测试系统
+### 4. Test the System
 
 ```bash
-# 测试系统功能
+# Test system functionality
 python3 main.py --test
 
-# 测试邮箱连接
+# Test email connection
 python3 email_sender.py
 ```
 
-### 5. 运行日报生成
+### 5. Generate Daily Report
 
 ```bash
-# 生成日报（发送邮件并打开浏览器）
+# Generate report (send email and open browser)
 python3 main.py
 
-# 生成日报但不发送邮件
+# Generate report without sending email
 python3 main.py --no-email
 
-# 生成日报但不打开浏览器
+# Generate report without opening browser
 python3 main.py --no-browser
 ```
 
-### 6. 设置定时任务
+### 6. Set Up Scheduled Tasks
 
 ```bash
-# 设置每天8点自动执行
+# Set up daily execution at 8:00 AM
 python3 main.py --setup-schedule
 
-# 或者使用scheduler.py管理定时任务
-python3 scheduler.py add      # 添加任务
-python3 scheduler.py status   # 查看状态
-python3 scheduler.py remove   # 移除任务
+# Or use scheduler.py to manage scheduled tasks
+python3 scheduler.py add      # Add task
+python3 scheduler.py status   # Check status
+python3 scheduler.py remove   # Remove task
 ```
 
-## 📁 项目结构
+## 📁 Project Structure
 
 ```
 AutoDLD/
-├── main.py              # 主程序入口
-├── config.py            # 配置文件
-├── requirements.txt     # 依赖包列表
-├── README.md           # 项目说明
-├── crawler.py          # 网页爬取模块
-├── summarizer.py       # 摘要生成模块
-├── html_generator.py   # HTML页面生成器
-├── email_sender.py     # 邮件发送模块
-├── scheduler.py        # 定时任务管理
-├── data/               # 数据目录（自动创建）
-├── logs/               # 日志目录（自动创建）
-└── templates/          # 模板目录（自动创建）
+├── main.py              # Main program entry
+├── config.py            # Configuration file
+├── requirements.txt     # Dependencies list
+├── README.md           # Project documentation
+├── crawler.py          # Web crawling module
+├── summarizer.py       # Summary generation module
+├── html_generator.py   # HTML page generator
+├── email_sender.py     # Email sending module
+├── scheduler.py        # Scheduled task management
+├── data/               # Data directory (auto-created)
+├── logs/               # Logs directory (auto-created)
+└── templates/          # Templates directory (auto-created)
 ```
 
-## 🔧 命令行参数
+## 🔧 Command Line Arguments
 
-### main.py 参数
+### main.py Arguments
 
-- `--test`: 运行系统测试
-- `--no-email`: 不发送邮件
-- `--no-browser`: 不打开浏览器
-- `--setup-schedule`: 设置定时任务
+- `--test`: Run system tests
+- `--no-email`: Don't send email
+- `--no-browser`: Don't open browser
+- `--setup-schedule`: Set up scheduled tasks
 
-### scheduler.py 参数
+### scheduler.py Arguments
 
-- `add`: 添加定时任务
-- `remove`: 移除定时任务
-- `status`: 查看任务状态
-- `enable`: 启用任务
-- `disable`: 禁用任务
-- `test`: 测试定时任务
+- `add`: Add scheduled task
+- `remove`: Remove scheduled task
+- `status`: Check task status
+- `enable`: Enable task
+- `disable`: Disable task
+- `test`: Test scheduled task
 
-## 📧 邮件格式
+## 📧 Email Format
 
-系统会发送包含以下内容的HTML邮件：
+The system sends HTML emails containing:
 
-- **邮件标题**: `每日新闻导览 - YYYY-MM-DD`
-- **邮件内容**:
-  - 今日导览摘要（AI生成）
-  - 各期刊文章列表
-  - 统计信息
-  - 生成时间戳
+- **Email Subject**: `Daily News Digest - YYYY-MM-DD`
+- **Email Content**:
+  - Today's overview summary (AI-generated)
+  - Article lists from each journal
+  - Statistical information
+  - Generation timestamp
 
-## 🎨 界面特性
+## 🎨 Interface Features
 
-生成的HTML页面具有以下特性：
+Generated HTML pages include:
 
-- **响应式设计**: 适配桌面和移动设备
-- **深色模式支持**: 自动适配系统主题
-- **平滑动画**: 悬停效果和过渡动画
-- **目录导航**: 快速跳转到各期刊部分
-- **返回顶部**: 便捷的导航功能
+- **Responsive Design**: Adapts to desktop and mobile devices
+- **Dark Mode Support**: Automatically adapts to system theme
+- **Smooth Animations**: Hover effects and transition animations
+- **Table of Contents**: Quick navigation to journal sections
+- **Back to Top**: Convenient navigation feature
 
-## 📊 日志系统
+## 📊 Logging System
 
-系统会自动生成详细的日志文件：
+The system automatically generates detailed log files:
 
-- `logs/main.log`: 主程序日志
-- `logs/crawler.log`: 爬虫日志
-- `logs/summarizer.log`: 摘要生成日志
-- `logs/html_generator.log`: HTML生成日志
-- `logs/email_sender.log`: 邮件发送日志
-- `logs/scheduler.log`: 定时任务日志
+- `logs/main.log`: Main program logs
+- `logs/crawler.log`: Crawler logs
+- `logs/summarizer.log`: Summary generation logs
+- `logs/html_generator.log`: HTML generation logs
+- `logs/email_sender.log`: Email sending logs
+- `logs/scheduler.log`: Scheduled task logs
 
-## 🔒 安全说明
+## 🔒 Security Notes
 
-- 所有API密钥和邮箱密码都存储在本地配置文件中
-- 系统使用TLS加密发送邮件
-- 爬虫设置了合理的请求间隔，避免对目标网站造成压力
-- 日志文件不包含敏感信息
+- All API keys and email passwords are stored in local configuration files
+- System uses TLS encryption for email sending
+- Crawler has reasonable request intervals to avoid overloading target websites
+- Log files do not contain sensitive information
 
-## 🐛 故障排除
+## 🐛 Troubleshooting
 
-### 常见问题
+### Common Issues
 
-1. **邮箱认证失败**
-   - 检查QQ邮箱和授权码是否正确
-   - 确认已开启SMTP服务
+1. **Email Authentication Failed**
+   - Check if QQ email and authorization code are correct
+   - Confirm SMTP service is enabled
 
-2. **爬取失败**
-   - 检查网络连接
-   - 目标网站可能更新了页面结构
+2. **Crawling Failed**
+   - Check network connection
+   - Target website may have updated page structure
 
-3. **API调用失败**
-   - 检查DeepSeek API密钥是否有效
-   - 检查网络连接
+3. **API Call Failed**
+   - Check if DeepSeek API key is valid
+   - Check network connection
 
-4. **定时任务不执行**
-   - 检查cron服务是否运行
-   - 查看日志文件获取详细信息
+4. **Scheduled Task Not Executing**
+   - Check if cron service is running
+   - Check log files for detailed information
 
-### 查看日志
+### View Logs
 
 ```bash
-# 查看最新日志
-tail -f /Users/ambrose/Desktop/codelab/AutoDLD/logs/main.log
+# View latest logs
+tail -f logs/main.log
 ```
 
-## 📄 许可证
+## 📄 License
 
-本项目仅供学习和研究使用。
+This project is for learning and research purposes only.
 
-## 🤝 贡献
+## 🤝 Contributing
 
-欢迎提交Issue和Pull Request来改进这个项目。
+Welcome to submit Issues and Pull Requests to improve this project.
 
-## 📞 联系信息
+## 📞 Contact Information
 
-如有问题，请在GitHub项目中提交Issue。
+If you have questions, please submit an Issue in the GitHub project.
 
 ---
 
-**注意**: 请确保遵守各期刊网站的使用条款，合理使用爬虫功能。
+**Note**: Please ensure compliance with the terms of use of each journal website and use crawling functionality responsibly.
